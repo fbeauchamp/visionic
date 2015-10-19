@@ -1,5 +1,8 @@
 angular.module('starter.controllers', [])
 
+.controller('VideosCtrl', function($scope) {
+  console.log(' in video controler')
+})
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -21,8 +24,6 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('DocumentsCtrl', function($scope) {
+
 });

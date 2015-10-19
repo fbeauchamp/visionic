@@ -1,26 +1,33 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
     <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
+      <div class="item item-divider">Room</div>
       <div class="item item-body">
         <div>
-          There is a fire in <b>sector 3</b>
+          You're in room <b>marvel</b>
+
+          <button class="button   button-outline button-assertive button-block ">
+            <i class="icon ion-ios-telephone"></i> Leave room
+          </button>
         </div>
       </div>
     </div>
     <div class="list card">
-      <div class="item item-divider">Health</div>
+      <div class="item item-divider">Security</div>
       <div class="item item-body">
-        <div>
-          You ate an apple today!
-        </div>
+        <ion-toggle  ng-model="settings.enableFriends">
+            Show in public room list ?
+        </ion-toggle>
+        <ion-toggle  ng-model="settings.enableFriends">
+            Password protection ?
+        </ion-toggle>
       </div>
     </div>
     <div class="list card">
-      <div class="item item-divider">Upcoming</div>
+      <div class="item item-divider">Participants</div>
       <div class="item item-body">
         <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
+          you
         </div>
       </div>
     </div>
