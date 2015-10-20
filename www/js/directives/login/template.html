@@ -1,11 +1,31 @@
 <div class="list">
   <form ng-submit="submit()">
+  <div class="item item-divider">Identity</div>
     <label class="item item-input">
       <input type="text" placeholder="Room name" ng-model="roomName">
     </label>
     <label class="item item-input">
       <input type="text" name="" placeholder="username, secret agent id,..." ng-model="username">
     </label>
+    <div class="item item-divider">Security</div>
+    <div class="item item-toggle">
+       Visible in room directory
+       <label class="toggle toggle-balanced">
+         <input type="checkbox" ng-model="visible">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+       </label>
+    </div>
+    <div class="item item-toggle">
+       Password protected
+       <label class="toggle toggle-assertive" ng-model="password">
+         <input type="checkbox">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+       </label>
+    </div>
 
     <button type="submit" class="button button-positive button-block" ng-disabled="!ready && !joining">
       {{submitButtonText()}}

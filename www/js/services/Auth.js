@@ -2,13 +2,15 @@
 angular
   .module('starter.services')
   .factory('AuthService', function ($http) {
-    var currentRoom = 'null', currentUserName = null
+    var currentRoom = {
+      name: 'auto'
+    }, currentUserName = null
     return {
       isInRoom: function () {
         return !!currentRoom
       },
       getRoom: function () {
-        return currentRoom
+        return currentRoom || {}
       },
       getUserName: function () {
         return currentUserName
@@ -29,11 +31,15 @@ angular
         return $http
           .post('/join', {room: roomName})
           .then(function () {
-            currentRoom = roomName
+            currentRoom = {
+              name: roomName
+            }
             currentUserName = userName
             return true
           }, function () {
-            currentRoom = 'failed'
+            currentRoom = {
+              name: 'failed'
+            }
             return false
           })
       }

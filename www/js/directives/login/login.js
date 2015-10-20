@@ -14,6 +14,7 @@ angular
     function link (scope, element, attrs) {
       scope.ready = false
       scope.joining = false
+      scope.visible = true
 
       scope.notReady = function () {
         return !scope.ready && !scope.joining
