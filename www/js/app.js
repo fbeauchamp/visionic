@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives'])
 
-.run(function ($ionicPlatform, $rootScope, $state, AuthService) {
+.run(function ($ionicPlatform, $rootScope, $state, AuthService, SocketService) {
   $ionicPlatform.ready(function () {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -31,6 +31,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       event.preventDefault();
     }
   });
+  SocketService.join('demo')
+  SocketService.messageToRoom('demo',{test:"tot"})
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
