@@ -7,18 +7,28 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform, $rootScope, $state, AuthService) {
+  $ionicPlatform.ready(function () {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true)
+      cordova.plugins.Keyboard.disableScroll(true)
 
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleLightContent();
+      StatusBar.styleLightContent()
+    }
+  });
+  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    console.log(' statechange start ',toState)
+    if (toState.name != 'login' && !AuthService.isInRoom()){
+      // User isn’t authenticated
+      console.log(' not auth')
+
+      $state.transitionTo("login");
+      event.preventDefault();
     }
   });
 })
@@ -31,6 +41,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  .state('login', {
+    templateUrl: 'templates/login.html'
+  })
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',

@@ -1,0 +1,15 @@
+<div class="list">
+  <form ng-submit="submit()">
+    <label class="item item-input">
+      <input type="text" placeholder="Room name" ng-model="roomName">
+    </label>
+    <label class="item item-input">
+      <input type="text" name="" placeholder="username, secret agent id,..." ng-model="username">
+    </label>
+
+    <button type="submit" class="button button-positive button-block" ng-disabled="!ready && !joining">
+      {{submitButtonText()}}
+      <ion-spinner class="spinner-light" ng-if="joining"></ion-spinner>
+    </button>
+  </form>
+</div>
