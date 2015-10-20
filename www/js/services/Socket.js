@@ -4,8 +4,13 @@ var angular = window.angular
 angular
   .module('starter.services')
   .factory('SocketService', function ($q) {
-    var socket = io()
+    var socket = io('http://localhost:3000')
     var listeners = {}
+    var messageLog = []
+
+    socket.on('message', function (message) {
+      messageLog.push(message)
+    })
 
     return {
       join: function (roomName) {
@@ -24,21 +29,9 @@ angular
         deferred.resolve()
         return deferred.promise
       },
-      messageToUser: function (userId, message) {
+      message: function (to, message) {
         socket.emit('message', {
-          to: {
-            id: userId,
-            type: 'direct'
-          },
-          message: message
-        })
-      },
-      messageToRoom: function (roomId, message) {
-        socket.emit('message', {
-          to: {
-            id: roomId,
-            type: 'room'
-          },
+          to: to,
           message: message
         })
       },
@@ -55,6 +48,9 @@ angular
           })
         }
         listeners[type].push(fn)
+      },
+      searchLog: function (filters) {
+        return messageLog
       }
     }
   })

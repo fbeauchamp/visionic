@@ -1,5 +1,11 @@
 <ion-view view-title="Chats">
-  <ion-content>
+  <ion-content style="bottom:120px;height:auto"  scroll-glue-bottom>
     <chat chats="chats"></chat>
   </ion-content>
+
+  <chat-postbox
+    to="room"
+    to-id="demo"
+    style="position:absolute;width:100%;background-color:red;bottom:50px"
+    ></chat-postbox>
 </ion-view>

@@ -1,12 +1,9 @@
 var store = []
 
 module.exports = {
-  store: function (to, message) {
-    message.id = store.length -1  // really really safe
-    store.push({
-      to: to,
-      message: message
-    })
+  store: function (message) {
+    message.id = store.length  // really really safe
+    store.push(message)
     return message.id
   },
   get: function (messageId) {
